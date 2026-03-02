@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ابدأ مسيرتك الكروية في الخارج | بوابة المسيرة الكروية</title>
+    
+    <!-- Google Fonts - Cairo (Arabic optimized) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-green: #1a472a;
+            --medium-green: #2d6a4f;
+            --light-green: #40916c;
+            --dark-bg: #0d0d0d;
+            --gold: #f4c430;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray-medium: #e0e0e0;
+            --error-red: #dc2626;
+            --success-green: #059669;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, var(--deep-green) 0%, var(--dark-bg) 100%);
+            color: var(--white);
+            min-height: 100vh;
+            direction: rtl;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(45, 106, 79, 0.15) 0px,
+                    rgba(45, 106, 79, 0.15) 20px,
+                    rgba(26, 71, 42, 0.15) 20px,
+                    rgba(26, 71, 42, 0.15) 40px
+                );
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--white) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: 2.5rem;
+            color: var(--gray-light);
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, #e6b800 100%);
+            color: var(--dark-bg);
+            padding: 1.2rem 3rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(244, 196, 48, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(244, 196, 48, 0.5);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px);
+        }
+
+        /* Form Section */
+        .form-section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header h2 {
+            color: var(--deep-green);
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: var(--medium-green);
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            color: var(--dark-bg);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        label .required {
+            color: var(--error-red);
+            margin-right: 3px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="tel"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gray-medium);
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+            color: var(--dark-bg);
+            direction: rtl;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--medium-green);
+            box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+        }
+
+        input.error,
+        select.error,
+        textarea.error {
+            border-color: var(--error-red);
+        }
+
+        .error-message {
+            color: var(--error-red);
+            font-size: 0.875rem;
+            margin-top: 0.3rem;
+            display: none;
+            font-weight: 600;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Radio buttons */
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .radio-option input[type="radio"] {
+            width: auto;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .radio-option label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Submit Button */
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--deep-green) 0%, var(--medium-green) 100%);
+            color: var(--white);
+            padding: 1.3rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(45, 106, 79, 0.4);
+        }
+
+        .submit-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Success Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-icon {
+            font-size: 5rem;
+            color: var(--success-green);
+            margin-bottom: 1rem;
+        }
+
+        .modal-content h3 {
+            color: var(--deep-green);
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            color: var(--dark-bg);
+            font-size: 1.2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 1.5rem;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-header h2 {
+                font-size: 2rem;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+            }
+
+            .form-container {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-icon">⚽</div>
+            <h1>ابدأ مسيرتك الكروية في الخارج</h1>
+            <p>تواصل مع أفضل الأندية حول العالم وارتقِ بمستواك الكروي</p>
+            <a href="#form" class="cta-button">سجّل الآن 🏆</a>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="form">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>استمارة التسجيل ⚽</h2>
+                <p>املأ البيانات التالية بدقة</p>
+            </div>
+
+            <form id="playerForm">
+                <!-- الاسم الكامل -->
+                <div class="form-group">
+                    <label for="fullName">الاسم الكامل <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" placeholder="أدخل اسمك الكامل" required>
+                    <div class="error-message" id="fullNameError">الرجاء إدخال الاسم الكامل</div>
+                </div>
+
+                <!-- العمر -->
+                <div class="form-group">
+                    <label for="age">العمر <span class="required">*</span></label>
+                    <input type="number" id="age" name="age" min="15" max="45" placeholder="15-45 سنة" required>
+                    <div class="error-message" id="ageError">الرجاء إدخال عمر صحيح (15-45 سنة)</div>
+                </div>
+
+                <!-- البلد -->
+                <div class="form-group">
+                    <label for="country">البلد <span class="required">*</span></label>
+                    <select id="country" name="country" required>
+                        <option value="">اختر البلد</option>
+                        <option value="المغرب">المغرب</option>
+                        <option value="الجزائر">الجزائر</option>
+                        <option value="تونس">تونس</option>
+                        <option value="مصر">مصر</option>
+                        <option value="السعودية">السعودية</option>
+                        <option value="الإمارات">الإمارات العربية المتحدة</option>
+                        <option value="قطر">قطر</option>
+                        <option value="الكويت">الكويت</option>
+                        <option value="البحرين">البحرين</option>
+                        <option value="عمان">عمان</option>
+                        <option value="الأردن">الأردن</option>
+                        <option value="لبنان">لبنان</option>
+                        <option value="سوريا">سوريا</option>
+                        <option value="العراق">العراق</option>
+                        <option value="اليمن">اليمن</option>
+                        <option value="ليبيا">ليبيا</option>
+                        <option value="السودان">السودان</option>
+                        <option value="الصومال">الصومال</option>
+                        <option value="جيبوتي">جيبوتي</option>
+                        <option value="موريتانيا">موريتانيا</option>
+                        <option value="فلسطين">فلسطين</option>
+                        <option value="السنغال">السنغال</option>
+                        <option value="ساحل العاج">ساحل العاج</option>
+                        <option value="نيجيريا">نيجيريا</option>
+                        <option value="غانا">غانا</option>
+                        <option value="الكاميرون">الكاميرون</option>
+                        <option value="مالي">مالي</option>
+                        <option value="بوركينا فاسو">بوركينا فاسو</option>
+                        <option value="فرنسا">فرنسا</option>
+                        <option value="إسبانيا">إسبانيا</option>
+                        <option value="إيطاليا">إيطاليا</option>
+                        <option value="ألمانيا">ألمانيا</option>
+                        <option value="إنجلترا">إنجلترا</option>
+                        <option value="البرتغال">البرتغال</option>
+                        <option value="هولندا">هولندا</option>
+                        <option value="بلجيكا">بلجيكا</option>
+                        <option value="تركيا">تركيا</option>
+                        <option value="البرازيل">البرازيل</option>
+                        <option value="الأرجنتين">الأرجنتين</option>
+                        <option value="أوروغواي">أوروغواي</option>
+                        <option value="كولومبيا">كولومبيا</option>
+                        <option value="المكسيك">المكسيك</option>
+                        <option value="الولايات المتحدة">الولايات المتحدة الأمريكية</option>
+                        <option value="كندا">كندا</option>
+                        <option value="اليابان">اليابان</option>
+                        <option value="كوريا الجنوبية">كوريا الجنوبية</option>
+                        <option value="الصين">الصين</option>
+                        <option value="أستراليا">أستراليا</option>
+                    </select>
+                    <div class="error-message" id="countryError">الرجاء اختيار البلد</div>
+                </div>
+
+                <!-- المركز -->
+                <div class="form-group">
+                    <label for="position">المركز <span class="required">*</span></label>
+                    <select id="position" name="position" required>
+                        <option value="">اختر المركز</option>
+                        <option value="حارس مرمى">حارس مرمى</option>
+                        <option value="مدافع">مدافع</option>
+                        <option value="لاعب وسط">لاعب وسط</option>
+                        <option value="جناح">جناح</option>
+                        <option value="مهاجم">مهاجم</option>
+                        <option value="صانع ألعاب">صانع ألعاب</option>
+                    </select>
+                    <div class="error-message" id="positionError">الرجاء اختيار المركز</div>
+                </div>
+
+                <!-- المستوى -->
+                <div class="form-group">
+                    <label>المستوى <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="amateur" name="level" value="هاوي" required>
+                            <label for="amateur">هاوي</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="semiPro" name="level" value="شبه محترف">
+                            <label for="semiPro">شبه محترف</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="professional" name="level" value="محترف">
+                            <label for="professional">محترف</label>
+                        </div>
+                    </div>
+                    <div class="error-message" id="levelError">الرجاء اختيار المستوى</div>
+                </div>
+
+                <!-- الطول -->
+                <div class="form-group">
+                    <label for="height">الطول (سم) <span class="required">*</span></label>
+                    <input type="number" id="height" name="height" min="140" max="220" placeholder="مثال: 178" required>
+                    <div class="error-message" id="heightError">الرجاء إدخال الطول بالسنتيمتر (140-220)</div>
+                </div>
+
+                <!-- الوزن -->
+                <div class="form-group">
+                    <label for="weight">الوزن (كغ) <span class="required">*</span></label>
+                    <input type="number" id="weight" name="weight" min="40" max="120" placeholder="مثال: 75" required>
+                    <div class="error-message" id="weightError">الرجاء إدخال الوزن بالكيلوغرام (40-120)</div>
+                </div>
+
+                <!-- رقم الهاتف -->
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="+212 XXX XXX XXX" required>
+                    <div class="error-message" id="phoneError">الرجاء إدخال رقم هاتف صحيح</div>
+                </div>
+
+                <!-- رابط الفيديو -->
+                <div class="form-group">
+                    <label for="videoLink">رابط مقاطع الفيديو</label>
+                    <input type="url" id="videoLink" name="videoLink" placeholder="https://youtube.com/... أو https://vimeo.com/...">
+                    <div class="error-message" id="videoLinkError">الرجاء إدخال رابط صحيح</div>
+                </div>
+
+                <!-- الخبرة -->
+                <div class="form-group">
+                    <label for="experience">الخبرة <span class="required">*</span></label>
+                    <textarea id="experience" name="experience" placeholder="الأندية السابقة، الإنجازات، البطولات..." required></textarea>
+                    <div class="error-message" id="experienceError">الرجاء إدخال معلومات عن خبرتك</div>
+                </div>
+
+                <button type="submit" class="submit-button">إرسال الطلب ⚽</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">✅</div>
+            <h3>تم إرسال طلبك بنجاح!</h3>
+            <p>سيتم تحويلك إلى واتساب خلال ثوانٍ...</p>
+        </div>
+    </div>
+
+    <script>
+        // WhatsApp number (FIXED)
+        const WHATSAPP_NUMBER = "212781214641";
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form validation and submission
+        const form = document.getElementById('playerForm');
+        const modal = document.getElementById('successModal');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+            document.querySelectorAll('input, select, textarea').forEach(el => el.classList.remove('error'));
+
+            // Get form values
+            const formData = {
+                fullName: document.getElementById('fullName').value.trim(),
+                age: document.getElementById('age').value,
+                country: document.getElementById('country').value,
+                position: document.getElementById('position').value,
+                level: document.querySelector('input[name="level"]:checked')?.value || '',
+                height: document.getElementById('height').value,
+                weight: document.getElementById('weight').value,
+                phone: document.getElementById('phone').value.trim(),
+                videoLink: document.getElementById('videoLink').value.trim(),
+                experience: document.getElementById('experience').value.trim()
+            };
+
+            // Validation
+            let isValid = true;
+            let firstError = null;
+
+            // Full Name
+            if (!formData.fullName) {
+                showError('fullName', 'fullNameError');
+                if (!firstError) firstError = 'fullName';
+                isValid = false;
+            }
+
+            // Age
+            const age = parseInt(formData.age);
+            if (!age || age < 15 || age > 45) {
+                showError('age', 'ageError');
+                if (!firstError) firstError = 'age';
+                isValid = false;
+            }
+
+            // Country
+            if (!formData.country) {
+                showError('country', 'countryError');
+                if (!firstError) firstError = 'country';
+                isValid = false;
+            }
+
+            // Position
+            if (!formData.position) {
+                showError('position', 'positionError');
+                if (!firstError) firstError = 'position';
+                isValid = false;
+            }
+
+            // Level
+            if (!formData.level) {
+                document.getElementById('levelError').classList.add('show');
+                if (!firstError) firstError = 'level';
+                isValid = false;
+            }
+
+            // Height
+            const height = parseInt(formData.height);
+            if (!height || height < 140 || height > 220) {
+                showError('height', 'heightError');
+                if (!firstError) firstError = 'height';
+                isValid = false;
+            }
+
+            // Weight
+            const weight = parseInt(formData.weight);
+            if (!weight || weight < 40 || weight > 120) {
+                showError('weight', 'weightError');
+                if (!firstError) firstError = 'weight';
+                isValid = false;
+            }
+
+            // Phone
+            if (!formData.phone || formData.phone.length < 8) {
+                showError('phone', 'phoneError');
+                if (!firstError) firstError = 'phone';
+                isValid = false;
+            }
+
+            // Video Link (optional but validate if provided)
+            if (formData.videoLink && !isValidUrl(formData.videoLink)) {
+                showError('videoLink', 'videoLinkError');
+                if (!firstError) firstError = 'videoLink';
+                isValid = false;
+            }
+
+            // Experience
+            if (!formData.experience) {
+                showError('experience', 'experienceError');
+                if (!firstError) firstError = 'experience';
+                isValid = false;
+            }
+
+            // Scroll to first error
+            if (!isValid && firstError) {
+                document.getElementById(firstError).scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Generate WhatsApp message
+            const message = `🏆 طلب لاعب كرة قدم جديد 🏆
+━━━━━━━━━━━━━━━━
+👤 الاسم: ${formData.fullName}
+🎂 العمر: ${formData.age} سنة
+🌍 البلد: ${formData.country}
+⚽ المركز: ${formData.position}
+🏅 المستوى: ${formData.level}
+📏 الطول: ${formData.height} سم
+⚖️ الوزن: ${formData.weight} كغ
+📞 الهاتف: ${formData.phone}
+🎥 الفيديو: ${formData.videoLink || 'غير متوفر'}
+━━━━━━━━━━━━━━━━
+📝 الخبرة:
+${formData.experience}
+━━━━━━━━━━━━━━━━
+تم الإرسال عبر بوابة المسيرة الكروية`;
+
+            // Show success modal
+            modal.classList.add('show');
+
+            // Redirect to WhatsApp after 2 seconds
+            setTimeout(() => {
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+                window.location.href = whatsappUrl;
+            }, 2000);
+        });
+
+        function showError(inputId, errorId) {
+            document.getElementById(inputId).classList.add('error');
+            document.getElementById(errorId).classList.add('show');
+        }
+
+        function isValidUrl(string) {
+            try {
+                const url = new URL(string);
+                return url.protocol === "http:" || url.protocol === "https:";
+            } catch (_) {
+                return false;
+            }
+        }
+
+        // Remove error on input
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('input', function() {
+                this.classList.remove('error');
+                const errorId = this.id + 'Error';
+                const errorElement = document.getElementById(errorId);
+                if (errorElement) {
+                    errorElement.classList.remove('show');
+                }
+            });
+        });
+
+        // Radio buttons error removal
+        document.querySelectorAll('input[name="level"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('levelError').classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>
